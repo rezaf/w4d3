@@ -1,0 +1,14 @@
+<h1><%= @cat.name %>'s Page</h1>
+<table>
+  <tr>
+    <td>Attribute</td><td>Value</td>
+  </tr>
+  <% @cat_attrs.each do |attr|%>
+  <tr>
+    <td><%= attr.to_s.capitalize %></td><td><%= @cat[attr] %></td>
+  </tr>
+  <% end %>    
+</table>
+
+<%= link_to "Edit Cat!", "#{edit_cat_url(@cat)}"%>
+

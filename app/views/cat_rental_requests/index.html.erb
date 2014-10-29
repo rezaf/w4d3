@@ -1,0 +1,8 @@
+<h1><%= @cat.name %>'s Requests</h1>
+<br>
+<ul>
+  <% @cat_requests.each do |request| %>
+  <li><%= request.start_date %>--<%= request.end_date %></li>
+  <% end %>
+</ul>
+<%= link_to "Create Cat!", "#{new_cat_url}" %>

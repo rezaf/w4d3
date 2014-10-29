@@ -1,0 +1,29 @@
+<% form_method = cat_request.persisted? ? "PATCH" : "POST" %>
+<% action_url = cat_request.persisted? ?  cat_rental_request_url(cat_request.id) : cat_rental_requests_url %>
+<% submit_text = cat_request.persisted? ? "Update Request!" : "Create Request!" %>
+
+<form action="<%= action_url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  
+  <label for="cat_request_cat_id">Cat Color</label>
+  <select name="cat_request[cat_id]" id="cat_request_cat_id">
+    <option value=""></option>
+    <% cats.each do |cat| %>
+      <option value="<%= cat.id %>"
+        <%= "selected" if cat.id == cat_request.cat_id %>><%= cat.name %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+  
+  <label for="cat_request_start_date">Start Date</label>
+  <input type="date" name="cat_request[start_date]" 
+  id="cat_request_start_date" value="<%= cat_request.start_date %>">
+  <br>
+  <label for="cat_request_end_date">End Date</label>
+  <input type="date" name="cat_request[end_date]" 
+  id="cat_request_end_date" value="<%= cat_request.end_date %>">
+  <br>
+  
+  <input type="submit" value="<%= submit_text %>">
+</form>  
