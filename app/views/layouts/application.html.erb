@@ -2,12 +2,21 @@
 <html>
 <head>
   <title>NinetyNineCats</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application',
+    media: 'all',
+    'data-turbolinks-track' => true %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <%= flash[:errors] && flash[:errors].to_json %>
+
+<h1>Welcome <%= current_user.nil? ? "" : current_user.user_name %>!</h1>
+<% unless current_user.nil? %>
+  <%= button_to "Log out",
+      {controller: "sessions", :action => "destroy"}, :method => :delete %>
+<% end %>
 
 <%= yield %>
 

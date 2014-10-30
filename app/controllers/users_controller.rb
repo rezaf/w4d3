@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     render :new
   end
   
+  
+  
   protected
   
   def user_params
